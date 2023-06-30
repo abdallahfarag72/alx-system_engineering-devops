@@ -6,7 +6,7 @@ pid=$(pgrep -f "4-to_infinity_and_beyond")
 
 if [[ -n $pid ]]; then
   # If the process is running, send the SIGINT signal to stop it
-  kill -2 $pid
+  pkill -INT -P $pid
 else
   echo "4-to_infinity_and_beyond process is not running"
 fi
