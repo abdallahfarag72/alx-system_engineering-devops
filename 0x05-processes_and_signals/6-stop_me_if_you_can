@@ -8,5 +8,5 @@ if [[ -n $pid ]]; then
   # If the process is running, send the SIGINT signal to stop it
   pkill -INT -P $pid
 else
-  echo "4-to_infinity_and_beyond process is not running"
+  echo "Terminated"
 fi
