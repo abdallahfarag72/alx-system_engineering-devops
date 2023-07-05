@@ -2,8 +2,7 @@
 
 input = ARGV[0]
 
-if input =~ /School/
-  puts "School"
-else
-  puts ""
-end
+matches = input.scan(/School/)
+output = matches.join
+
+puts output
