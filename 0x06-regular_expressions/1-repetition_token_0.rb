@@ -2,7 +2,9 @@
 
 input = ARGV[0]
 
-matches = input.scan(/hb(t{2,5}n)$/)
-output = matches.flatten.join("\n")
+if input =~ /hb(t{2,5})n/
+  puts input
+else
+  puts ""
+end
 
-puts output
