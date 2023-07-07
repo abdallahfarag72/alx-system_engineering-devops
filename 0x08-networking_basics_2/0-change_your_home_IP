@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script configures an Ubuntu server with specific DNS resolutions
+
+# Check if running inside Docker container
+if grep -q docker /proc/1/cgroup; then
+  echo "Running inside Docker container."
+  echo "Modifying /etc/hosts file..."
+  
+  # Modify /etc/hosts file
+  sed -i 's/localhost$/localhost\n127.0.0.2/g' /etc/hosts
+  sed -i 's/facebook.com$/facebook.com\n8.8.8.8/g' /etc/hosts
+  
+  echo "Done."
+else
+  echo "This script should be run inside a Docker container."
+fi

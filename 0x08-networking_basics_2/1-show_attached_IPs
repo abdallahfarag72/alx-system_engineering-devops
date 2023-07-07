@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script displays all active IPv4 IPs on the machine
+
+# Get the IP addresses using ifconfig
+ip_addresses=$(ifconfig | awk '/inet /{print $2}')
+
+# Loop through each IP address and filter out IPv6 addresses
+for ip in $ip_addresses; do
+  if [[ $ip == *":"* ]]; then
+    continue
+  fi
+  echo "$ip"
+done
