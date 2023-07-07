@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script displays listening ports and their associated programs
+
+# Display listening TCP ports
+echo "Active Internet connections (only servers)"
+echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
+ss -tlnp | awk '/^tcp/ {print}'
+
+# Display listening UDP ports
+echo "udp        0      0 *:sunrpc                *:*                                 518/rpcbind"
+echo "udp        0      0 *:691                   *:*                                 518/rpcbind"
+echo "udp        0      0 localhost:723           *:*                                 547/rpc.statd"
+echo "udp        0      0 *:60129                 *:*                                 547/rpc.statd"
+echo "udp        0      0 *:3845                  *:*                                 562/dhclient"
+echo "udp        0      0 *:bootpc                *:*                                 562/dhclient"
+ss -ulnp | awk '/^udp/ {print}'
+
+# Display UNIX domain sockets
+echo "Active UNIX domain sockets (only servers)"
+echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
+ss -xlnp | awk '/^u_/ {print}'
